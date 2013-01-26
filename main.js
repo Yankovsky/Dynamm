@@ -4,7 +4,7 @@
  * 3) move draw functions somewhere
  */
 
-window.onload = function() {
+window.onload = function () {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
 
@@ -17,20 +17,25 @@ window.onload = function() {
     console.log(width, height)
 
     var mouseX = 0;
-    window.document.addEventListener("mousemove", function(event) {
+
+    window.document.addEventListener("mousemove", function (event) {
         mouseX = event.clientX;
         //mouseY = event.clientY;
     }, false);
 
-    var player = {x:100, y: (height-100), width:100, height:100,
-        update:function() {
-            if (player.x > mouseX) {
+    var player = {x:100, y:(height - 100), width:100, height:100, speed:5,
+        update:function () {
+            if (Math.abs(mouseX - player.x) < player.speed) {
+                player.x = mouseX;
+            } else if (player.x > mouseX) {
                 player.x -= 5;
             } else if (player.x < mouseX) {
                 player.x += 5;
             }
         }};
-    var enemies = [{x : 200, y : 200, width : 50, height : 50}];
+    var enemies = [
+        {x:200, y:200, width:50, height:50}
+    ];
 
     function updateGameCycle() {
         update();
@@ -47,7 +52,6 @@ window.onload = function() {
     function update() {
         player.update();
     }
-
 
 
     function draw() {
