@@ -16,6 +16,7 @@ window.onload = function() {
 
     console.log(width, height)
 
+    var mouseX = 0;
     window.document.addEventListener("mousemove", function(event) {
         mouseX = event.clientX;
         //mouseY = event.clientY;
@@ -53,7 +54,7 @@ window.onload = function() {
         clearCanvas();
 
         ctx.fillStyle = "black";
-        ctx.fillRect(player.x, player.y, player.width, player.height);
+        ctx.fillRect(player.x - player.width / 2, player.y - player.height / 2, player.width, player.height);
     }
 
     function clearCanvas() {
