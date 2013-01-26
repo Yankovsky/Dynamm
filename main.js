@@ -18,19 +18,27 @@ window.onload = function () {
 
     var mouseX = 0;
 
+    var ticks = 0;
     window.document.addEventListener("mousemove", function (event) {
         mouseX = event.clientX;
         //mouseY = event.clientY;
     }, false);
+    var playerBullets = [];
+    function shoot(x, y) {
+        playerBullets.push({x : x, y : y, width : 10, height: 10});
+    }
 
-    var player = {x:100, y:(height - 100), width:100, height:100, speed:5,
+    var player = {x:100, y:(height - 100), width:100, height:100, speed:20,
         update:function () {
             if (Math.abs(mouseX - player.x) < player.speed) {
                 player.x = mouseX;
             } else if (player.x > mouseX) {
-                player.x -= 5;
+                player.x -= player.speed;
             } else if (player.x < mouseX) {
-                player.x += 5;
+                player.x += player.speed;
+            }
+            if (ticks % 15 == 0) {
+                shoot(player.x, player.y);
             }
         }};
     var enemies = [
@@ -42,7 +50,7 @@ window.onload = function () {
         draw()
     }
 
-    var delayBetweenFrames = 40;
+    var delayBetweenFrames = 30;
     var interval = setInterval(updateGameCycle, delayBetweenFrames);
 
     function gameEnd() {
@@ -51,6 +59,10 @@ window.onload = function () {
 
     function update() {
         player.update();
+        for (var i = 0; i < playerBullets.length; i++) {
+            playerBullets[i].y -= 5;
+        }
+        ticks++;
     }
 
 
@@ -59,6 +71,11 @@ window.onload = function () {
 
         ctx.fillStyle = "black";
         ctx.fillRect(player.x - player.width / 2, player.y - player.height / 2, player.width, player.height);
+
+        for (var i = 0; i < playerBullets.length; i++) {
+            var bullet = playerBullets[i];
+            ctx.fillRect(bullet.x - bullet.width / 2, bullet.y - bullet.height / 2, bullet.width, bullet.height);
+        }
     }
 
     function clearCanvas() {
