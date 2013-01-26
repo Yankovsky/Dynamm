@@ -21,7 +21,7 @@ window.onload = function() {
         //mouseY = event.clientY;
     }, false);
 
-    var player = {x:100, y:100, width:100, height:100,
+    var player = {x:100, y: (height-100), width:100, height:100,
         update:function() {
             if (player.x > mouseX) {
                 player.x -= 5;
