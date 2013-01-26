@@ -13,7 +13,8 @@ window.onload = function() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
 
-    var player = {x : 100, y : 100};
+    var player = {x : 100, y : 100, width : 100, height : 100};
+    var enemies = [{x : 200, y : 200, width : 50, height : 50}];
 
     function updateGameCycle() {
         update();
@@ -27,14 +28,21 @@ window.onload = function() {
     }
 
     function update() {
+
+        player.update();
+        checkCollision
         player.x += 5;
     }
 
     function draw() {
-        ctx.fillStyle = "orange";
-        ctx.fillRect(0, 0, 600, 600);
+        clearCanvas();
 
         ctx.fillStyle = "black";
-        ctx.fillRect(player.x, player.y, 100, 100);
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+    }
+
+    function clearCanvas() {
+        ctx.fillStyle = "orange";
+        ctx.fillRect(0, 0, 600, 600);
     }
 };
