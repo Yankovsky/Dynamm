@@ -1,8 +1,3 @@
-window.document.addEventListener("mousemove", function(event) {
-/*    myClientX = event.clientX;
-    myClientY = event.clientY;*/
-}, false);
-
 /* Tasks
  * 1) movement by mouse or keyboard or both
  * 2) enemies
@@ -13,7 +8,20 @@ window.onload = function() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
 
-    var player = {x : 100, y : 100, width : 100, height : 100};
+    var mouseX = 0;
+    window.document.addEventListener("mousemove", function(event) {
+        mouseX = event.clientX;
+        //mouseY = event.clientY;
+    }, false);
+
+    var player = {x:100, y:100, width:100, height:100,
+        update:function() {
+            if (player.x > mouseX) {
+                player.x -= 5;
+            } else if (player.x < mouseX) {
+                player.x += 5;
+            }
+        }};
     var enemies = [{x : 200, y : 200, width : 50, height : 50}];
 
     function updateGameCycle() {
@@ -21,17 +29,15 @@ window.onload = function() {
         draw()
     }
 
-    var interval = setInterval(updateGameCycle, 100);
+    var delayBetweenFrames = 40;
+    var interval = setInterval(updateGameCycle, delayBetweenFrames);
 
     function gameEnd() {
         clearInterval(interval);
     }
 
     function update() {
-
         player.update();
-        checkCollision
-        player.x += 5;
     }
 
     function draw() {
