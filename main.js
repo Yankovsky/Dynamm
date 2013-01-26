@@ -8,7 +8,14 @@ window.onload = function() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
 
-    var mouseX = 0;
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+
+    ctx.canvas.width = width;
+    ctx.canvas.height = height;
+
+    console.log(width, height)
+
     window.document.addEventListener("mousemove", function(event) {
         mouseX = event.clientX;
         //mouseY = event.clientY;
@@ -40,6 +47,8 @@ window.onload = function() {
         player.update();
     }
 
+
+
     function draw() {
         clearCanvas();
 
@@ -49,6 +58,6 @@ window.onload = function() {
 
     function clearCanvas() {
         ctx.fillStyle = "orange";
-        ctx.fillRect(0, 0, 600, 600);
+        ctx.fillRect(0, 0, width, height);
     }
 };
