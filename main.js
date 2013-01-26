@@ -3,6 +3,12 @@ window.document.addEventListener("mousemove", function(event) {
     myClientY = event.clientY;*/
 }, false);
 
+/* Tasks
+ * 1) movement by mouse or keyboard or both
+ * 2) enemies
+ * 3) move draw functions somewhere
+ */
+
 window.onload = function() {
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
