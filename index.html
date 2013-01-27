@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Dynamm</title>
-    <link rel="stylesheet" href="style.css">
+    <head>
+        <title>Dynamm</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <canvas id="myCanvas"></canvas>
+        <script type="text/javascript" src="js/dynamm-game.js"></script>
+        <script type="text/javascript" src="js/drawable.js"></script>
+        <script type="text/javascript" src="js/game-object.js"></script>
+        <script type="text/javascript" src="js/player.js"></script>
 
-</head>
-<body>
-<canvas id="myCanvas"></canvas>
-<script type="text/javascript" src="main.js"></script>
-</body>
+        <script type="text/javascript" src="js/bullet.js"></script>
+        <script type="text/javascript" src="js/rocket.js"></script>
+        <script type="text/javascript" src="js/laser-shot.js"></script>
+
+        <script type="text/javascript" src="js/gun.js"></script>
+        <script type="text/javascript" src="js/rocket-gun.js"></script>
+        <script type="text/javascript" src="js/laser-gun.js"></script>
+        <script type="text/javascript">
+            window.onload = function() {
+                var canvas = document.getElementById("myCanvas");
+                var ctx = canvas.getContext("2d");
+
+                var width = window.innerWidth;
+                var height = window.innerHeight;
+
+                ctx.canvas.width = width;
+                ctx.canvas.height = height;
+
+                console.log(width, height);
+
+                var game = new DynammGame(ctx, width, height, 30);
+                game.start();
+            };
+        </script>
+    </body>
 </html>
