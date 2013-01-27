@@ -1,10 +1,10 @@
 RocketGun.prototype = new Gun();
 function RocketGun(game, owner) {
-    Gun.call(this, game, owner, 40, 60, 10)
+    Gun.call(this, game, owner, 40, 60, 20)
 }
 RocketGun.prototype.shoot = function() {
     if (this.game.ticks % this.ticksToReload == 0) {
-        this.game.gameObjects.push(new Rocket(this.game, this.center().x, this.y));
+        this.game.addBullet(new Rocket(this.game, this.center().x, this.y));
     }
 };
 RocketGun.prototype.draw = function() {

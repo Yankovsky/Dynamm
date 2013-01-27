@@ -37,7 +37,7 @@ Player.prototype.update = function() {
     }
 };
 Player.prototype.draw = function() {
-    this.game.ctx.fillStyle = "black";
+    this.game.ctx.fillStyle = "gray";
     this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
     var guns = [this.leftGun, this.rightGun];
     for (var i = 0; i < guns.length; i++) {

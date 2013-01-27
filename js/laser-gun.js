@@ -4,7 +4,7 @@ function LaserGun(game, owner) {
 }
 LaserGun.prototype.shoot = function() {
     if (this.game.ticks % this.ticksToReload == 0) {
-        this.game.gameObjects.push(new LaserShot(this.game, this.center().x, this.y));
+        this.game.addBullet(new LaserShot(this.game, this.center().x, this.y));
     }
 };
 LaserGun.prototype.draw = function() {
