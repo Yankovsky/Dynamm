@@ -4,3 +4,6 @@ function Enemy(game, x, y, width, height, health) {
     this.health = health;
     this.fullHealth = health;
 }
+Enemy.prototype.update = function() {
+    this.y += 1;
+};
